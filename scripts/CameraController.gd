@@ -2,7 +2,7 @@ extends Camera
 
 var lookSensitivity : float = 15.0
 var minLookAngle : float = -60.0
-var maxLookAngle : float = 30.0
+var maxLookAngle : float = 60.0
 
 var mouseDelta : Vector2 = Vector2()
 

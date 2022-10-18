@@ -1,12 +1,13 @@
 extends KinematicBody
 
-var moveSpeed : float = 3.0
-var jumpForce : float = 10.0
+var moveSpeed : float = 6.0
+var jumpForce : float = 5.0
 var gravity : float = 15.0
 
 var vel : Vector3 = Vector3()
 
-#onready var attackRayCast = get_node("AttackRayCast")
+onready var attackRayCast = $Camera/Gun/AttackRayCast
+onready var hud = $HUD
 
 func _ready():
 	pass
@@ -41,3 +42,8 @@ func _physics_process(delta):
 		vel.y = jumpForce
 
 	vel = move_and_slide(vel, Vector3.UP)
+	
+	#Raycast
+	var collision = attackRayCast.get_collider()
+	if (collision):
+		hud.updateRayHitLabel(collision)
