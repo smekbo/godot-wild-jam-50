@@ -35,3 +35,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.61661, 1.09344, 8.14897 )
 
 [node name="Box2" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.327912, 1.12754, 7.4024 )
+
+[node name="Box3" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.327912, 3.51878, 7.4024 )

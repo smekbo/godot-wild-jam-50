@@ -1,8 +1,7 @@
 extends Spatial
 
-
 onready var animationTree = $AnimationTree
-
+var blastReady = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,6 +10,8 @@ func _ready():
 func blastem():
 	animationTree["parameters/OneShot/active"] = true
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func isBlastReady():
+	return !animationTree["parameters/OneShot/active"]
+
+func finishedBlastin():
+	blastReady = true

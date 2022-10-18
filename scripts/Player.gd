@@ -45,15 +45,16 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("movement_jump") and is_on_floor():
 		vel.y = jumpForce
 
-	if Input.is_action_just_pressed("fire"):
-		blaster.blastem()
-		var collision = attackRayCast.get_collider()
-		if (collision):
-			if (collision.get_class() == "RigidBody"):
-				var position = camera.project_ray_normal(crosshair.rect_position)
-				var force = (position * 500)
-				collision.add_force(force, position)
-			hud.updateRayHitLabel(collision)
+	if Input.is_action_pressed("fire"):
+		if blaster.isBlastReady():
+			blaster.blastem()
+			var collision = attackRayCast.get_collider()
+			if (collision):
+				if (collision.get_class() == "RigidBody"):
+					var position = camera.project_ray_normal(crosshair.rect_position)
+					var force = (position * 500)
+					collision.add_force(force, position)
+				hud.updateRayHitLabel(collision)
 
 	vel = move_and_slide(vel, Vector3.UP)
 	
