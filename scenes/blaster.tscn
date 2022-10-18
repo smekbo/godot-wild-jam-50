@@ -1,19 +1,31 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/gltf/blaster.gltf" type="PackedScene" id=1]
+[ext_resource path="res://scripts/blaster.gd" type="Script" id=2]
+
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "blastem"
 
 [sub_resource type="AnimationNodeAnimation" id=1]
 animation = "idle-loop"
 
+[sub_resource type="AnimationNodeOneShot" id=4]
+
 [sub_resource type="AnimationNodeBlendTree" id=2]
-graph_offset = Vector2( -181, 43 )
+graph_offset = Vector2( -482, 93 )
 nodes/Animation/node = SubResource( 1 )
-nodes/Animation/position = Vector2( 60, 120 )
-node_connections = [ "output", 0, "Animation" ]
+nodes/Animation/position = Vector2( -180, 100 )
+"nodes/Animation 2/node" = SubResource( 3 )
+"nodes/Animation 2/position" = Vector2( -180, 220 )
+nodes/OneShot/node = SubResource( 4 )
+nodes/OneShot/position = Vector2( 80, 120 )
+node_connections = [ "output", 0, "OneShot", "OneShot", 0, "Animation", "OneShot", 1, "Animation 2" ]
 
 [node name="blaster" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
 tree_root = SubResource( 2 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
+parameters/OneShot/active = false

@@ -11,6 +11,8 @@ onready var hud = $HUD
 onready var camera = $Camera
 onready var crosshair = $HUD/Crosshair
 
+onready var blaster = $Camera/Gun/blaster
+
 func _ready():
 	pass
 
@@ -44,6 +46,7 @@ func _physics_process(delta):
 		vel.y = jumpForce
 
 	if Input.is_action_just_pressed("fire"):
+		blaster.blastem()
 		var collision = attackRayCast.get_collider()
 		if (collision):
 			if (collision.get_class() == "RigidBody"):
