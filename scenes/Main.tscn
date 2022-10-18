@@ -2,15 +2,14 @@
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Main.gd" type="Script" id=2]
-[ext_resource path="res://assets/grass_0.png" type="Texture" id=3]
+[ext_resource path="res://assets/texture/grass_0.png" type="Texture" id=3]
 [ext_resource path="res://scenes/box.tscn" type="PackedScene" id=4]
 
-[sub_resource type="SpatialMaterial" id=4]
+[sub_resource type="SpatialMaterial" id=3]
 albedo_texture = ExtResource( 3 )
-uv1_scale = Vector3( 7, 7, 1 )
 
 [sub_resource type="PlaneMesh" id=1]
-material = SubResource( 4 )
+material = SubResource( 3 )
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 1, 0.0358663, 1 )
@@ -32,7 +31,7 @@ skeleton = NodePath("../..")
 shape = SubResource( 2 )
 
 [node name="Box" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.61661, 0.0358837, 8.14897 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.61661, 1.09344, 8.14897 )
 
 [node name="Box2" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.327912, 0.0358739, 7.4024 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.327912, 1.12754, 7.4024 )

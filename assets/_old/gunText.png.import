@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/handColor.png-aed1baa980e5837fadf186de6d063000.s3tc.stex"
-path.etc="res://.import/handColor.png-aed1baa980e5837fadf186de6d063000.etc.stex"
+path.s3tc="res://.import/gunText.png-2611fa2462179b096529e60d89a0007f.s3tc.stex"
+path.etc="res://.import/gunText.png-2611fa2462179b096529e60d89a0007f.etc.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/handColor.png"
-dest_files=[ "res://.import/handColor.png-aed1baa980e5837fadf186de6d063000.s3tc.stex", "res://.import/handColor.png-aed1baa980e5837fadf186de6d063000.etc.stex" ]
+source_file="res://assets/_old/gunText.png"
+dest_files=[ "res://.import/gunText.png-2611fa2462179b096529e60d89a0007f.s3tc.stex", "res://.import/gunText.png-2611fa2462179b096529e60d89a0007f.etc.stex" ]
 
 [params]
 

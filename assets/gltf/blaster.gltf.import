@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/hand.gltf-d87986f4ec7d7ec8167a586195eb2b1b.scn"
+path="res://.import/blaster.gltf-1faf025271c1e5a9ff3f4648dbafcf30.scn"
 
 [deps]
 
-source_file="res://assets/hand.gltf"
-dest_files=[ "res://.import/hand.gltf-d87986f4ec7d7ec8167a586195eb2b1b.scn" ]
+source_file="res://assets/gltf/blaster.gltf"
+dest_files=[ "res://.import/blaster.gltf-1faf025271c1e5a9ff3f4648dbafcf30.scn" ]
 
 [params]
 
