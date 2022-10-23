@@ -3,6 +3,7 @@ extends Camera
 var lookSensitivity : float = 15.0
 var minLookAngle : float = -60.0
 var maxLookAngle : float = 60.0
+onready var hand = $Gun/hand
 
 var mouseDelta : Vector2 = Vector2()
 
@@ -24,6 +25,8 @@ func _process(delta):
 	rotation_degrees.x = clamp(rotation_degrees.x, minLookAngle, maxLookAngle)
 	
 	player.rotation_degrees.y -= rot.y
+	
+	hand.set_camera_rotation(player.rotation)
 	
 	mouseDelta = Vector2()
 

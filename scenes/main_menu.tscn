@@ -1,0 +1,217 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://scenes/blasterOnly.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/themes/main_menu.tres" type="Theme" id=2]
+[ext_resource path="res://scripts/main_menu.gd" type="Script" id=3]
+
+[sub_resource type="Theme" id=8]
+
+[sub_resource type="Gradient" id=9]
+colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 0 )
+
+[sub_resource type="GradientTexture" id=10]
+gradient = SubResource( 9 )
+width = 250
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:translation:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0.327691, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:translation:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath(".:translation:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "rotate"
+length = 4.0
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:translation:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 1, 0, 1, -1, 0, 1, 0, 0, -1, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2, 4 )
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 360, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "spin"
+length = 12.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 12 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 360, 0 ) ]
+}
+
+[sub_resource type="ProceduralSky" id=3]
+
+[sub_resource type="Environment" id=4]
+background_mode = 1
+background_sky = SubResource( 3 )
+
+[node name="main_menu" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+theme = ExtResource( 2 )
+
+[node name="Control" type="Control" parent="Control"]
+anchor_left = 0.025
+anchor_top = 0.453
+anchor_right = 0.046
+anchor_bottom = 0.453
+margin_left = 21.0
+margin_top = -18.0
+margin_right = 189.0
+margin_bottom = 292.0
+theme = SubResource( 8 )
+
+[node name="TextureRect" type="TextureRect" parent="Control/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -70.0
+margin_right = -0.0840149
+texture = SubResource( 10 )
+expand = true
+
+[node name="start" type="Button" parent="Control/Control"]
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.101
+anchor_bottom = 0.1
+margin_left = -48.0084
+margin_top = 26.26
+margin_right = -10.1975
+margin_bottom = 40.26
+rect_scale = Vector2( 4, 3.97469 )
+text = "START"
+
+[node name="exit" type="Button" parent="Control/Control"]
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.1
+anchor_bottom = 0.1
+margin_left = -48.0084
+margin_top = 105.26
+margin_right = -21.0084
+margin_bottom = 119.26
+rect_scale = Vector2( 4, 4 )
+text = "EXIT"
+
+[node name="credits" type="Button" parent="Control/Control"]
+visible = false
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.1
+anchor_bottom = 0.1
+margin_left = -48.0084
+margin_top = 189.26
+margin_right = 3.9916
+margin_bottom = 203.26
+rect_scale = Vector2( 4, 4 )
+text = "CREDITS"
+
+[node name="blasterAnimationPivot" type="Spatial" parent="."]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0.327691, 1, 0 )
+
+[node name="blasterOnly" parent="blasterAnimationPivot" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 0.34202, -0.939693, 0, 0.939693, 0.34202, 0, 0, 0 )
+
+[node name="Camera" type="Camera" parent="blasterAnimationPivot/blasterOnly"]
+transform = Transform( 1.31134e-07, 0, -1, 0.173648, 0.984808, 2.27712e-08, 0.984808, -0.173648, 1.29142e-07, -3.03784, 0.713742, -1.98879 )
+
+[node name="float" type="AnimationPlayer" parent="blasterAnimationPivot"]
+autoplay = "rotate"
+anims/RESET = SubResource( 5 )
+anims/rotate = SubResource( 2 )
+
+[node name="spin" type="AnimationPlayer" parent="blasterAnimationPivot"]
+autoplay = "spin"
+anims/RESET = SubResource( 6 )
+anims/spin = SubResource( 7 )
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10.1341, 7.42902 )
+light_color = Color( 1, 0.701961, 0.239216, 1 )
+light_energy = 5.0
+spot_range = 49.343
+
+[node name="SpotLight2" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -0.707107, -0.707107, 0, 0.707107, -0.707107, 0, -12.2707, -12.2082 )
+light_color = Color( 0.713726, 1, 0.623529, 1 )
+light_energy = 5.0
+spot_range = 49.343
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 4 )
+
+[connection signal="pressed" from="Control/Control/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Control/Control/exit" to="." method="_on_exit_pressed"]

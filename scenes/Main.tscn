@@ -1,34 +1,125 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Main.gd" type="Script" id=2]
-[ext_resource path="res://assets/texture/grass_0.png" type="Texture" id=3]
+[ext_resource path="res://assets/texture/tree-silhouette-forest-5.png" type="Texture" id=3]
 [ext_resource path="res://scenes/box.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/enemyController.gd" type="Script" id=5]
+[ext_resource path="res://scenes/altar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/texture/grass_0.png" type="Texture" id=7]
 
-[sub_resource type="SpatialMaterial" id=3]
-albedo_texture = ExtResource( 3 )
+[sub_resource type="SpatialMaterial" id=7]
+albedo_texture = ExtResource( 7 )
 
-[sub_resource type="PlaneMesh" id=1]
-material = SubResource( 3 )
+[sub_resource type="PlaneMesh" id=8]
+material = SubResource( 7 )
+
+[sub_resource type="NavigationMesh" id=4]
+vertices = PoolVector3Array( 1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, -1 )
+polygons = [ PoolIntArray( 0, 1, 2 ), PoolIntArray( 1, 3, 2 ) ]
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 1, 0.0358663, 1 )
 
+[sub_resource type="SpatialMaterial" id=9]
+flags_transparent = true
+albedo_texture = ExtResource( 3 )
+uv1_scale = Vector3( 1, -1, 1 )
+
+[sub_resource type="PlaneMesh" id=1]
+material = SubResource( 9 )
+
+[sub_resource type="BoxShape" id=10]
+extents = Vector3( 1, 17.4979, 0.0281069 )
+
+[sub_resource type="ProceduralSky" id=6]
+sky_top_color = Color( 1, 0, 0, 1 )
+sky_horizon_color = Color( 1, 0.423529, 0, 1 )
+sky_curve = 0.146205
+sky_energy = 0.05
+sun_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="Environment" id=5]
+background_mode = 2
+background_sky = SubResource( 6 )
+ambient_light_color = Color( 0.0941176, 0.027451, 0, 1 )
+ambient_light_energy = 2.0
+fog_enabled = true
+fog_depth_begin = 0.0
+fog_depth_end = 50.0
+
 [node name="Main" type="Spatial"]
 script = ExtResource( 2 )
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.998831, 0.0358682, 1.36074 )
-
 [node name="Floor" type="StaticBody" parent="."]
-transform = Transform( 20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0 )
+transform = Transform( 40, 0, 0, 0, 1, 0, 0, 0, 40, 0, 0, 0 )
+collision_layer = 2
 
 [node name="MeshInstance" type="MeshInstance" parent="Floor"]
-mesh = SubResource( 1 )
+mesh = SubResource( 8 )
 skeleton = NodePath("../..")
+
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Floor/MeshInstance"]
+navmesh = SubResource( 4 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Floor"]
 shape = SubResource( 2 )
+
+[node name="wall" type="StaticBody" parent="."]
+transform = Transform( 40, 0, 0, 0, 1, 0, 0, 0, 40, 0, 0, 0 )
+collision_layer = 2
+collision_mask = 0
+
+[node name="MeshInstance" type="MeshInstance" parent="wall"]
+transform = Transform( 1, 0, 0, 0, -1.82012e-08, 16.6558, 0, -0.025, -4.37114e-08, 0, 16.7143, 0.981503 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+
+[node name="CollisionShape" type="CollisionShape" parent="wall"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.3562, 0.98173 )
+shape = SubResource( 10 )
+
+[node name="wall2" type="StaticBody" parent="."]
+transform = Transform( -1.74846e-06, 0, 40, 0, 1, 0, -40, 0, -1.74846e-06, 0, 0, 0 )
+collision_layer = 2
+collision_mask = 0
+
+[node name="MeshInstance" type="MeshInstance" parent="wall2"]
+transform = Transform( 1, 0, 0, 0, -1.82012e-08, 16.6558, 0, -0.025, -4.37114e-08, 0, 16.7143, 0.981503 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+
+[node name="CollisionShape" type="CollisionShape" parent="wall2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.3562, 0.98173 )
+shape = SubResource( 10 )
+
+[node name="wall3" type="StaticBody" parent="."]
+transform = Transform( -40, 0, -3.49691e-06, 0, 1, 0, 3.49691e-06, 0, -40, 0, 0, 0 )
+collision_layer = 2
+collision_mask = 0
+
+[node name="MeshInstance" type="MeshInstance" parent="wall3"]
+transform = Transform( 1, 0, 0, 0, -1.82012e-08, 16.6558, 0, -0.025, -4.37114e-08, 0, 16.7143, 0.981503 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+
+[node name="CollisionShape" type="CollisionShape" parent="wall3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.3562, 0.98173 )
+shape = SubResource( 10 )
+
+[node name="wall4" type="StaticBody" parent="."]
+transform = Transform( 4.76995e-07, 0, -40, 0, 1, 0, 40, 0, 4.76995e-07, 0, 0, 0 )
+collision_layer = 2
+collision_mask = 0
+
+[node name="MeshInstance" type="MeshInstance" parent="wall4"]
+transform = Transform( 1, 0, 0, 0, -1.82012e-08, 16.6558, 0, -0.025, -4.37114e-08, 0, 16.7143, 0.981503 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+
+[node name="CollisionShape" type="CollisionShape" parent="wall4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.3562, 0.98173 )
+shape = SubResource( 10 )
 
 [node name="Box" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.61661, 1.09344, 8.14897 )
@@ -38,3 +129,31 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.327912, 1.12754, 7.4024 )
 
 [node name="Box3" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.327912, 3.51878, 7.4024 )
+
+[node name="enemyController" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[node name="enemies" type="Node" parent="enemyController"]
+
+[node name="spawnPoints" type="Node" parent="enemyController"]
+
+[node name="spawn" type="Spatial" parent="enemyController/spawnPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.144, 7.36661, -33.8464 )
+
+[node name="spawn4" type="Spatial" parent="enemyController/spawnPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.144, 7.36661, 28.5638 )
+
+[node name="spawn5" type="Spatial" parent="enemyController/spawnPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -35.0414, 7.36661, 28.5638 )
+
+[node name="spawn3" type="Spatial" parent="enemyController/spawnPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -31.3635, 5.84599, -32.2311 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 5 )
+
+[node name="altar" parent="." instance=ExtResource( 6 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.5126, 0.0358691, 13.5225 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.26395, 0.0358973, 1.25694 )

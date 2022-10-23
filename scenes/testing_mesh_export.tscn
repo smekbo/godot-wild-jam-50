@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="NavigationMesh" id=2]
+
+[sub_resource type="CubeMesh" id=1]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="."]
+navmesh = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="NavigationMeshInstance"]
+transform = Transform( 7.80068, 0, 0, 0, 0.100778, 0, 0, 0, 7.80068, 0, 0, 0 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
